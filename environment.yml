@@ -1,0 +1,61 @@
+name: deeplearning
+channels:
+- peterjc123
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+- conda-forge
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+- defaults
+dependencies:
+- backports.functools_lru_cache=1.4=py36_1
+- ca-certificates=2017.11.5=0
+- cycler=0.10.0=py36_0
+- jpeg=9b=vc14_1
+- matplotlib=2.1.2=py36_0
+- olefile=0.44=py36_0
+- openssl=1.0.2n=vc14_0
+- pillow=5.0.0=py36_0
+- protobuf=3.5.1=py36_vc14_3
+- pyparsing=2.2.0=py36_0
+- pyqt=5.6.0=py36_4
+- python-dateutil=2.6.1=py36_0
+- pytz=2017.3=py_2
+- sip=4.18=py36_1
+- tornado=4.5.3=py36_0
+- zlib=1.2.11=vc14_0
+- freetype=2.8=h51f8f2c_1
+- icu=58.2=ha66f8fd_1
+- libpng=1.6.32=h140d38e_4
+- libprotobuf=3.4.1=h3dba5dd_0
+- libtiff=4.0.9=h0f13578_0
+- python=3.6.3=h3b118a2_4
+- qt=5.6.2=vc14h6f8c307_12
+- sqlite=3.20.1=h9eeafa9_2
+- backports=1.0=py36_0
+- backports.weakref=1.0rc1=py36_0
+- bleach=1.5.0=py36_0
+- certifi=2016.2.28=py36_0
+- cffi=1.10.0=py36_0
+- html5lib=0.9999999=py36_0
+- markdown=2.6.9=py36_0
+- mkl=2017.0.3=0
+- numpy=1.13.1=py36_0
+- pip=9.0.1=py36_1
+- pycparser=2.18=py36_0
+- scipy=0.19.1=np113py36_0
+- setuptools=36.4.0=py36_1
+- six=1.10.0=py36_0
+- tensorflow=1.2.1=py36_0
+- vs2015_runtime=14.0.25420=0
+- werkzeug=0.12.2=py36_0
+- wheel=0.29.0=py36_0
+- wincertstore=0.2=py36_0
+- pytorch=0.3.0=py36_0.3.0
+- vc=14.1=h21ff451_0
+- vs2017_runtime=15.4.27004.2010=0
+- pip:
+  - backports.functools-lru-cache==1.4
+  - pyyaml==3.12
+  - torch==0.3.0b0+591e73e
+  - torchvision==0.2.0
+prefix: C:\Users\itays\Anaconda3\envs\deeplearning
+
