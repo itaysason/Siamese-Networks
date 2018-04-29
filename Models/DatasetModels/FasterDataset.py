@@ -177,7 +177,7 @@ class SiameseNetworkDataset(Dataset):
         if self.transform is not None:
             img = self.transform(img)
 
-        return 1 - img
+        return img
 
     def not_drawing_unique(self):
         num_negatives = self.get_number_negatives()

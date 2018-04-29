@@ -37,15 +37,15 @@ alpha_dist = alpha_dist / t
 alpha_contrastive = alpha_contrastive / t
 
 # data sets
-train_dataset = SiameseNetworkDataset(training_path, transform=transform, should_invert=False, load_images=True, include_rotations=include_rotations)
+train_dataset = SiameseNetworkDataset(training_path, transform=transform, should_invert=True, load_images=True, include_rotations=include_rotations)
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size)
 print("Training set length is {}".format(len(train_dataset)))
 
-validation_dataset = SiameseNetworkDataset(validation_path, transform=transform, should_invert=False, load_images=True, include_rotations=include_rotations)
+validation_dataset = SiameseNetworkDataset(validation_path, transform=transform, should_invert=True, load_images=True, include_rotations=include_rotations)
 validation_dataloader = DataLoader(validation_dataset, batch_size=1000)
 print("Validation set length is {}".format(len(validation_dataset)))
 
-test_dataset = SiameseNetworkDataset(test_path, transform=transform, should_invert=False, load_images=True)
+test_dataset = SiameseNetworkDataset(test_path, transform=transform, should_invert=True, load_images=True)
 test_dataloader = DataLoader(test_dataset, batch_size=1)
 print("Test set length is {}\n".format(len(test_dataset)))
 
