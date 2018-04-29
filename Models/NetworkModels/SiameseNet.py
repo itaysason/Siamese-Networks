@@ -31,7 +31,7 @@ class SiameseNetwork(nn.Module):
 
         # 19x19 is only for image size 105, for other sizes need to compute
         self.fc1 = nn.Sequential(
-            nn.Linear(2*2*2*first_filter * 19 * 19, 1024),
+            nn.Linear(2*2*2*first_filter * 2 * 2, 1024),
             nn.ReLU(inplace=True),
 
             nn.Linear(1024, output_size))

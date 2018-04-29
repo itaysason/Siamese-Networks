@@ -16,32 +16,36 @@ from utils.save_and_load import save_checkpoint, load_checkpoint
 import numpy as np
 
 # settings
+training_path = 'data_35x35/train_set'
+validation_path = 'data_35x35/validation_set'
+test_path = 'data_35x35/Mnist_data'
 cuda = 3
 transform = transforms.Compose([transforms.ToTensor()])
 learning_rate = 0.0005
-batch_size = 512
+batch_size = 1024
 num_epochs = 20
 train_net = True
-num_images_to_plot = 1
+num_images_to_plot = 2
 net_path = 'checkpoint.pth.tar'
 load_net = False
 save_net = False
 alpha_contrastive = 1.0
 alpha_dist = 0.25  # parameter for combination of losses
+include_rotations = False
+t = alpha_contrastive
+alpha_dist = alpha_dist / t
+alpha_contrastive = alpha_contrastive / t
 
 # data sets
-train_image_folder = dset.ImageFolder(root='data_35x35/train_set')
-train_dataset = SiameseNetworkDataset(train_image_folder, transform=transform, should_invert=False, load_images=True, include_rotations=True)
+train_dataset = SiameseNetworkDataset(training_path, transform=transform, should_invert=False, load_images=True, include_rotations=include_rotations)
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size)
 print("Training set length is {}".format(len(train_dataset)))
 
-validation_image_folder = dset.ImageFolder(root='data_35x35/validation_set')
-validation_dataset = SiameseNetworkDataset(validation_image_folder, transform=transform, should_invert=False, load_images=True, include_rotations=True)
+validation_dataset = SiameseNetworkDataset(validation_path, transform=transform, should_invert=False, load_images=True, include_rotations=include_rotations)
 validation_dataloader = DataLoader(validation_dataset, batch_size=1000)
 print("Validation set length is {}".format(len(validation_dataset)))
 
-test_image_folder = dset.ImageFolder(root='data_35x35/Mnist_data')
-test_dataset = SiameseNetworkDataset(test_image_folder, transform=transform, should_invert=False, load_images=True)
+test_dataset = SiameseNetworkDataset(test_path, transform=transform, should_invert=False, load_images=True)
 test_dataloader = DataLoader(test_dataset, batch_size=1)
 print("Test set length is {}\n".format(len(test_dataset)))
 
@@ -89,10 +93,10 @@ if train_net:
 
         # adding current loss on validation data
         print('epoch {} finished in {} seconds'.format(epoch, time.clock() - tic))
-        # current_loss = eval_func(net, validation_dataloader, contrastive_loss, cuda)
-        # loss_history.append(current_loss)
-        # counter.append(epoch)
-        # print('epoch {} loss is {}\n'.format(epoch, current_loss))
+        current_loss = eval_func(net, validation_dataloader, contrastive_loss, cuda)
+        loss_history.append(current_loss)
+        counter.append(epoch)
+        print('epoch {} loss is {}\n'.format(epoch, current_loss))
 
         # save progress
         if save_net:

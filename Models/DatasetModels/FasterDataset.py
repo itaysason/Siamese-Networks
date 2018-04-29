@@ -4,6 +4,7 @@ import torch
 from PIL import Image
 from torch.utils.data import Dataset
 from utils.tensor_rotation import rotate_tensor
+import torchvision.datasets
 
 
 class SiameseNetworkDataset(Dataset):
@@ -32,6 +33,7 @@ class SiameseNetworkDataset(Dataset):
 
     def __init__(self, images_folder, transform=None, should_invert=True,
                  duplicate_image=False, load_images=False, include_rotations=False):
+        images_folder = torchvision.datasets.ImageFolder(root=images_folder)
         self.images_folder = images_folder
         self.transform = transform
         self.should_invert = should_invert
